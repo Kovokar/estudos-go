@@ -1,17 +1,17 @@
-// package main
+package main
 
-// import "fmt"
+import "fmt"
 
-// var pi float64 = 3.14159
-// var raio float64
-// var volume float64
+var pi float64 = 3.14159
+var raio float64
+var volume float64
 
-// func main() {
+func main() {
 
-// 	fmt.Scanf("%v", &raio)
+	fmt.Scanf("%v", &raio)
 
-// 	volume = (raio * raio * raio) * pi * (4.0 / 3)
+	volume = (raio * raio * raio) * pi * (4.0 / 3)
 
-// 	fmt.Printf("VOLUME = %.3f\n", volume)
+	fmt.Printf("VOLUME = %.3f\n", volume)
 
-// }
+}

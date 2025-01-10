@@ -1,15 +1,15 @@
-// package main
+package main
 
-// import "fmt"
+import "fmt"
 
-// var x int
-// var y int
+var x int
+var y int
 
-// func main() {
+func main() {
 
-// 	fmt.Scanf("%d", &x)
-// 	fmt.Scanf("%d", &y)
+	fmt.Scanf("%d", &x)
+	fmt.Scanf("%d", &y)
 
-// 	fmt.Printf("SOMA = %d\n", x+y)
+	fmt.Printf("SOMA = %d\n", x+y)
 
-// }
+}

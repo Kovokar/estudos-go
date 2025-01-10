@@ -1,17 +1,17 @@
-// package main
+package main
 
-// import "fmt"
+import "fmt"
 
-// // conversao de tipos
+// conversao de tipos
 
-// type sub int
+type sub int
 
-// var x sub
+var x sub
 
-// func main() {
+func main() {
 
-// 	fmt.Printf("x = %v\n", x)
-// 	fmt.Printf("x = %T\n", x)
-// 	x = 42
-// 	fmt.Printf("x = %v\n", x)
-// }
+	fmt.Printf("x = %v\n", x)
+	fmt.Printf("x = %T\n", x)
+	x = 42
+	fmt.Printf("x = %v\n", x)
+}

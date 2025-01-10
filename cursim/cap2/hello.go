@@ -1,8 +1,8 @@
-// package main
+package main
 
-// import "fmt"
+import "fmt"
 
-// func main() {
-// 	n_bites, _ := fmt.Println("Hello,")
-// 	fmt.Println(n_bites)
-// }
+func main() {
+	n_bites, _ := fmt.Println("Hello,")
+	fmt.Println(n_bites)
+}

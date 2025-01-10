@@ -1,18 +1,18 @@
-// package main
+package main
 
-// import "fmt"
+import "fmt"
 
-// // conversao de tipos
+// conversao de tipos
 
-// func main() {
+func main() {
 
-// 	x := 42
-// 	y := "joao super"
-// 	z := true
+	x := 42
+	y := "joao super"
+	z := true
 
-// 	fmt.Printf("x = %v\ny = %v\nz = %v\n\n", x,y,z)
+	fmt.Printf("x = %v\ny = %v\nz = %v\n\n", x, y, z)
 
-// 	fmt.Printf("x = %v\n", x)
-// 	fmt.Printf("y = %v\n", y)
-// 	fmt.Printf("z = %v\n", z)
-// }
+	fmt.Printf("x = %v\n", x)
+	fmt.Printf("y = %v\n", y)
+	fmt.Printf("z = %v\n", z)
+}

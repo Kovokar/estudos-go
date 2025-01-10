@@ -1,16 +1,16 @@
-// package main
+package main
 
-// import "fmt"
+import "fmt"
 
-// var pi float64 = 3.14159
-// var raio float64
-// var area float64
+var pi float64 = 3.14159
+var raio float64
+var area float64
 
-// func main() {
+func main() {
 
-// 	fmt.Scanf("%v", &raio)
-// 	area = (raio * raio) * pi
+	fmt.Scanf("%v", &raio)
+	area = (raio * raio) * pi
 
-// 	fmt.Printf("A=%.4f\n", area)
+	fmt.Printf("A=%.4f\n", area)
 
-// }
+}
