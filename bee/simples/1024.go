@@ -1,8 +1,13 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strings"
 )
+
+var frases = make([]string, 100)
 
 func main() {
 	exec()
@@ -49,11 +54,20 @@ func exec() {
 	num := 0
 	fmt.Scan(&num)
 
+	reader := bufio.NewReader(os.Stdin)
+
 	for i := 0; i < num; i++ {
 		var palavra string
-		fmt.Scan(&palavra)
+		palavra, _ = reader.ReadString('\n')
+		palavra = strings.TrimSpace(palavra)
 		palavra = soma3(palavra)
 		palavra = inverte(palavra)
-		fmt.Println(soma1(palavra))
+		palavra = soma1(palavra)
+
+		// if i == num-1 {
+		// 	fmt.Print(palavra)
+		// } else {
+		fmt.Println(palavra)
+		// }
 	}
 }
