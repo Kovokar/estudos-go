@@ -19,7 +19,7 @@ func NewClienteRepository(connection *sql.DB) ClienteRepository {
 
 func (cr *ClienteRepository) GetClientes() ([]model.Cliente, error) {
 
-	query := "SELECT id, nome, endereco, telefone, bairro FROM cliente"
+	query := "SELECT * FROM cliente"
 	rows, err := cr.connection.Query(query)
 	if err != nil {
 		fmt.Println(err)

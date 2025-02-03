@@ -21,12 +21,17 @@ func main() {
 	//Camada de repository
 	ProductRepository := repository.NewProductRepository(dbConnection)
 	ClienteRepository := repository.NewClienteRepository(dbConnection)
+	PizzaRepository := repository.NewPizzaRepository(dbConnection)
+
 	//Camada usecase
 	ProductUseCase := usecase.NewProductUseCase(ProductRepository)
 	ClienteUseCase := usecase.NewClienteUseCase(ClienteRepository)
+	PizzaUsecase := usecase.NewPizzaUsecase(PizzaRepository)
+
 	//Camada de controllers
 	ProductController := controller.NewProductController(ProductUseCase)
 	ClienteController := controller.NewClienteController(ClienteUseCase)
+	pizzaController := controller.NewPizzaController(PizzaUsecase)
 
 	server.GET("/ping", func(ctx *gin.Context) {
 		ctx.JSON(200, gin.H{
@@ -42,14 +47,15 @@ func main() {
 	server.POST("/cliente", ClienteController.CreateCliente)
 	server.GET("/clientes/:clienteId", ClienteController.GetClienteById)
 	//--------------------------------------------------------------------------------
+	server.GET("/pizzas", pizzaController.GetPizzas)
+	server.POST("/pizza", pizzaController.CreatePizza)
+	server.GET("/pizzas/:clienteId", pizzaController.GetPizzaById)
+	//--------------------------------------------------------------------------------
+	// server.GET("/pizzas", pizzaController.GetPizzas)
+	// server.POST("/pizza", pizzaController.CreatePizza)
+	// server.GET("/pizzas/:clienteId", pizzaController.GetPizzaById)
+	// //--------------------------------------------------------------------------------
 
-
-
-
-
-
-
-	
 	server.Run(":8000")
 
 }

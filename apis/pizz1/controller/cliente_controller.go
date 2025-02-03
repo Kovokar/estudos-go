@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"go-api/model"
 	"go-api/usecase"
 	"net/http"
@@ -53,9 +52,6 @@ func (c *clienteController) CreateCliente(ctx *gin.Context) {
 func (c *clienteController) GetClienteById(ctx *gin.Context) {
 
 	id := ctx.Param("clienteId")
-	fmt.Println(id)
-	fmt.Println(id)
-	fmt.Println(id)
 	if id == "" {
 		response := model.Response{
 			Message: "Id do cliente nao pode ser nulo",

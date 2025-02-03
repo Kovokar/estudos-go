@@ -11,8 +11,8 @@ const (
 	host     = "localhost"
 	port     = 5432
 	user     = "postgres"
-	password = "caocao"
-	dbname   = "caocao"
+	password = "Girassol0@"
+	dbname   = "apigo1"
 )
 
 func ConnectDB() (*sql.DB, error) {
