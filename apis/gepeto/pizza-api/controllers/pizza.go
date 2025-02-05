@@ -26,6 +26,9 @@ func CreatePizza(c *gin.Context) {
 
 func GetPizzas(c *gin.Context) {
 	var pizzas []models.Pizza
-	db.Find(&pizzas)
+    if err := dbs.GetDB().Find(&pizzas).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Erro ao listar pizzas"})
+		return
+	}
 	c.JSON(200, pizzas)
 }

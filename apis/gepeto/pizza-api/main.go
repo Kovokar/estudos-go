@@ -1,13 +1,13 @@
-// main.go
 package main
 
 import (
 	"fmt"
 	"log"
 	"pizza-api/controllers"
-	"pizza-api/dbs" // Aqui você importa o pacote de configuração do banco
+	"pizza-api/dbs"
 	"pizza-api/models"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,24 +17,27 @@ func main() {
 		User:     "postgres",
 		Password: "Girassol0@",
 		DbName:   "gepeto",
-		Host:     "localhost", // Host definido como localhost
-		Port:     "5432",      // Porta padrão do PostgreSQL
-		SSLMode:  "disable",   // SSL desabilitado
+		Host:     "localhost",
+		Port:     "5432",
+		SSLMode:  "disable",
 	}
 
 	dbs.InitDB(config)
 
-	// Usando AutoMigrate para criar as tabelas automaticamente
-	if err := dbs.GetDB().AutoMigrate(&models.Cliente{}, &models.Pizza{}, &models.Tamanho{}, &models.Pedido{}, &models.ItensPedido{}); err != nil {
+	// AutoMigrate para criar as tabelas
+	if err := dbs.GetDB().AutoMigrate(&models.Cliente{}, &models.Pizza{}, &models.Tamanho{}, &models.Pedido{}, &models.ItensPedido{}, &models.Finalizado{}); err != nil {
 		log.Fatal("Erro ao migrar os modelos:", err)
 	}
 
 	fmt.Println("Tabelas criadas com sucesso!")
 
-	// Aqui você pode continuar configurando o Gin e as rotas
+	// Inicializa o router Gin
 	router := gin.Default()
 
-	// Roteamento
+	// 🔥 Habilita CORS
+	router.Use(cors.Default())
+
+	// Definição de rotas
 	router.POST("/clientes", controllers.CreateCliente)
 	router.GET("/clientes", controllers.GetClientes)
 	router.POST("/pizzas", controllers.CreatePizza)
@@ -43,9 +46,13 @@ func main() {
 	router.GET("/tamanhos", controllers.GetTamanhos)
 	router.POST("/pedidos", controllers.CreatePedido)
 	router.GET("/pedidos", controllers.GetPedidos)
+
+	router.POST("/finalizado", controllers.CreateItemFinalizado)
+	router.GET("/finalizados", controllers.GetItensFinalizado)
+
 	router.POST("/itenspedidos", controllers.CreateItemPedido)
 	router.GET("/itenspedidos", controllers.GetItensPedidos)
-
+	//------------------------------------------------
 	// Inicia o servidor na porta 8080
 	router.Run(":8080")
 }

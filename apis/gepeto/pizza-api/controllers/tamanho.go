@@ -28,7 +28,7 @@ func CreateTamanho(c *gin.Context) {
 }
 
 func GetTamanhos(c *gin.Context) {
-	var tamanhos []models.Cliente
+	var tamanhos []models.Tamanho
 
 	if err := dbs.GetDB().Find(&tamanhos).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Erro ao listar cliente"})
