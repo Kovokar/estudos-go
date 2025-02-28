@@ -5,7 +5,7 @@ type Timer struct {
 	targetTicks  int
 }
 
-func NewTime(target int) *Timer {
+func NewTimer(target int) *Timer {
 	return &Timer{
 		currentTicks: 0,
 		targetTicks:  target,
