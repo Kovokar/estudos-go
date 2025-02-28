@@ -44,12 +44,14 @@ func (g *Game) Update() error {
 		}
 	}
 
-	// for i, m =: range g.meteoros {
-	// 	for j, l =: range g.lasers {
-	// 		if m.cog
-
-	// 	}
-	// }
+	for i, m := range g.meteoros {
+		for j, l := range g.lasers {
+			if m.Collider().Intersects(l.Collider()) {
+				g.meteoros = append(g.meteoros[:i], g.meteoros[i+1:]...)
+				g.lasers = append(g.lasers[:j], g.lasers[j+1:]...)
+			}
+		}
+	}
 
 	return nil
 }
