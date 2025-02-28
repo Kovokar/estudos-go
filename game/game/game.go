@@ -1,12 +1,20 @@
 package game
 
-import "github.com/hajimehoshi/ebiten/v2"
+import (
+	"fmt"
+	"go-game/assets"
+	"image/color"
+
+	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/text"
+)
 
 type Game struct {
 	player      *Player
 	lasers      []*Laser
 	meteoros    []*Meteoro
 	meteorSpawn *Timer
+	score       int
 }
 
 func NewGame() *Game {
@@ -49,6 +57,7 @@ func (g *Game) Update() error {
 			if m.Collider().Intersects(l.Collider()) {
 				g.meteoros = append(g.meteoros[:i], g.meteoros[i+1:]...)
 				g.lasers = append(g.lasers[:j], g.lasers[j+1:]...)
+				g.score++
 			}
 		}
 	}
@@ -67,6 +76,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 		m.Draw(screen)
 	}
 
+	text.Draw(screen, fmt.Sprintf("Pontos: %d", g.score), assets.FontUi, 20, 100, color.White)
 }
 
 func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
@@ -82,4 +92,5 @@ func (g *Game) Reset() {
 	g.meteoros = nil
 	g.lasers = nil
 	g.meteorSpawn.Reset()
+	g.score = 0
 }
