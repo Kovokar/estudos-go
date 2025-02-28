@@ -1,7 +1,6 @@
 package game
 
 import (
-	"fmt"
 	"go-game/assets"
 
 	"github.com/hajimehoshi/ebiten/v2"
@@ -37,7 +36,6 @@ func (p *Player) Update() {
 	if ebiten.IsKeyPressed(ebiten.KeyLeft) && p.position.x > 0 {
 		p.position.x -= speed
 	} else if ebiten.IsKeyPressed(ebiten.KeyRight) && p.position.x < 700 {
-		fmt.Println(p.position.x)
 		p.position.x += speed
 	}
 
