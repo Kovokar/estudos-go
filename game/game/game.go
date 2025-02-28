@@ -43,6 +43,14 @@ func (g *Game) Update() error {
 			g.Reset()
 		}
 	}
+
+	// for i, m =: range g.meteoros {
+	// 	for j, l =: range g.lasers {
+	// 		if m.cog
+
+	// 	}
+	// }
+
 	return nil
 }
 
