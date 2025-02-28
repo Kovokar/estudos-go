@@ -38,6 +38,11 @@ func (g *Game) Update() error {
 		m.Update()
 	}
 
+	for _, m := range g.meteoros {
+		if m.Collider().Intersects(g.player.Collider()) {
+			g.Reset()
+		}
+	}
 	return nil
 }
 
@@ -60,4 +65,11 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (int, int) {
 
 func (g *Game) AddLasers(laser *Laser) {
 	g.lasers = append(g.lasers, laser)
+}
+
+func (g *Game) Reset() {
+	g.player = NewPlayer(g)
+	g.meteoros = nil
+	g.lasers = nil
+	g.meteorSpawn.Reset()
 }
