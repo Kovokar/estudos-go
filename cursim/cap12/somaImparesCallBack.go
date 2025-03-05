@@ -5,7 +5,6 @@ import "fmt"
 var numbs = []int{1, 2, 3, 4, 5}
 
 func main() {
-	// fmt.Println(somaImpares(somaVals(numbs...)))
 	fmt.Println(somaImpares(somaVals, numbs...))
 }
 
