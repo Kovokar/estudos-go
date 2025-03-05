@@ -14,6 +14,7 @@ func multiplicador() func(i int) int {
 	tot := 1
 
 	return func(i int) int {
-		return (tot * i)
+		tot = tot * i
+		return (tot)
 	}
 }
