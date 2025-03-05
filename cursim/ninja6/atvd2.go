@@ -5,7 +5,6 @@ import "fmt"
 var list = []int{1, 2, 3, 4}
 
 func main() {
-
 	fmt.Println(spread(1, 2, 3, 4, 5))
 	fmt.Println(sumList(list))
 }
