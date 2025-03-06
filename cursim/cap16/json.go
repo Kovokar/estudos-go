@@ -24,7 +24,13 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("Com MARSHAL")
 	os.Stdout.Write(b)
 	fmt.Print("\n")
-	fmt.Println(b)
+	// fmt.Println(string(b))
+
+	//FORMA DOIS
+	fmt.Println("Com ENCODER")
+	encd := json.NewEncoder(os.Stdout)
+	encd.Encode(veiculos)
 }
