@@ -2,42 +2,40 @@ package main
 
 import (
 	"fmt"
-	"io"
+	"strings"
 )
 
-func seq(num int, cont int) {
-	lista := []int{0}
-	for i := 1; i <= num; i++ {
-		for j := 0; j < i; j++ {
-			lista = append(lista, i)
-		}
-	}
-	if len(lista) == 1 {
-		fmt.Printf("Caso %d: %d numero\n", cont, len(lista))
-	} else {
-		fmt.Printf("Caso %d: %d numeros\n", cont, len(lista))
-	}
-
-	for i := 0; i < len(lista); i++ {
-		if i == len(lista)-1 {
-			fmt.Println(lista[i]) // Último item sem espaço
-		} else {
-			fmt.Print(lista[i], " ") // Espaço entre os números
-		}
-	}
-}
-
 func main() {
-	cont := 1
-	for {
-		var o int
-		_, err := fmt.Scanf("%d", &o)
+	var n, caso int
 
-		if err == io.EOF {
+	for {
+		_, err := fmt.Scan(&n)
+		if err != nil {
 			break
 		}
-		seq(o, cont)
-		cont++
+
+		caso++
+		totalNumeros := 1 + (n * (n + 1) / 2) // Fórmula para o tamanho total da sequência
+		var builder strings.Builder
+		builder.WriteString("0")
+
+		for i := 1; i <= n; i++ {
+			for j := 0; j < i; j++ {
+				builder.WriteString(fmt.Sprintf(" %d", i))
+			}
+		}
+
+		// Tratamento da palavra "numero" ou "numeros"
+		if totalNumeros == 1 {
+			fmt.Printf("Caso %d: %d numero\n", caso, totalNumeros)
+		} else {
+			fmt.Printf("Caso %d: %d numeros\n", caso, totalNumeros)
+		}
+
+		// Imprime a sequência completa de uma vez só
+		fmt.Println(builder.String())
+
+		// Linha em branco após cada caso
 		fmt.Println()
 	}
 }
