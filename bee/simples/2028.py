@@ -8,8 +8,8 @@ def seq(num: int):
           lista.append(i)
 
     print(f"Caso {i}: {len(lista)}", "numero" if len(lista) == 1 else "numeros")
-    for k in lista:
-        print(k, end=" ")
+    # for k in lista:
+    #     print(k, end=" ")
     print("\n")
 
 
