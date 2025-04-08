@@ -5,29 +5,31 @@ import (
 	"time"
 )
 
-func numeros() {
+func numeros(done chan bool) {
 	for i := 0; i < 26; i++ {
 		fmt.Printf("%v ", i)
 		time.Sleep(time.Millisecond * 100)
 	}
+	done <- true
 }
 
-func letrs() {
+func letrs(done chan bool) {
 	for i := 'a'; i <= 'z'; i++ {
 		fmt.Printf("%c ", i)
 		time.Sleep(time.Millisecond * 100)
 	}
-}
-
-func sacanagem() {
-	time.Sleep(time.Millisecond * 100)
-
-	fmt.Println()
+	done <- true
 }
 
 func main() {
-	go numeros()
-	go letrs()
+	cn := make(chan bool)
+	cl := make(chan bool)
+
+	go numeros(cn)
+	go letrs(cl)
+
+	<-cn
+	<-cl
 	// go sacanagem()
 	// time.Sleep(time.Second * 5)
 
