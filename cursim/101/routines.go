@@ -5,31 +5,34 @@ import (
 	"time"
 )
 
-func numeros(done chan<- bool) {
+func numeros(n chan<- int) {
 	for i := 0; i < 26; i++ {
-		fmt.Printf("%v ", i)
+		// fmt.Printf("%v ", i)
+		n <- i
+		fmt.Printf("escrito do chan %d\n", i)
 		time.Sleep(time.Millisecond * 100)
 	}
-	done <- true
+	close(n)
+	// done <- true
 }
 
-func letrs(done chan<- bool) {
-	for i := 'a'; i <= 'z'; i++ {
-		fmt.Printf("%c ", i)
-		time.Sleep(time.Millisecond * 100)
-	}
-	done <- true
-}
+// func letrs(done chan<- bool) {
+// 	for i := 'a'; i <= 'z'; i++ {
+// 		fmt.Printf("%c ", i)
+// 		time.Sleep(time.Millisecond * 100)
+// 	}
+// 	done <- true
+// }
 
 func main() {
-	cn := make(chan bool)
-	cl := make(chan bool)
-
+	cn := make(chan int)
 	go numeros(cn)
-	go letrs(cl)
 
-	<-cn
-	<-cl
+	for v := range cn {
+		fmt.Printf("lido do chan %d\n ", v)
+		time.Sleep(time.Millisecond * 90)
+
+	}
 	// go sacanagem()
 	// time.Sleep(time.Second * 5)
 
