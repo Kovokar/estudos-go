@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func numeros(done chan bool) {
+func numeros(done chan<- bool) {
 	for i := 0; i < 26; i++ {
 		fmt.Printf("%v ", i)
 		time.Sleep(time.Millisecond * 100)
@@ -13,7 +13,7 @@ func numeros(done chan bool) {
 	done <- true
 }
 
-func letrs(done chan bool) {
+func letrs(done chan<- bool) {
 	for i := 'a'; i <= 'z'; i++ {
 		fmt.Printf("%c ", i)
 		time.Sleep(time.Millisecond * 100)
