@@ -16,8 +16,6 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
-	fmt.Println(os.Getenv("TEST"))
-
 	router := gin.Default()
 
 	routes.InitRoutes(&router.RouterGroup)
