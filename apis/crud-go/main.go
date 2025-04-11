@@ -1,9 +1,7 @@
 package main
 
 import (
-	"fmt"
 	"log"
-	"os"
 
 	"github.com/Kovokar/estudos-go/tree/main/apis/crud-go/src/controller/routes"
 	"github.com/gin-gonic/gin"
